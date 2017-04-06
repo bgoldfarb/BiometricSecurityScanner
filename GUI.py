@@ -1,5 +1,7 @@
-
-import Tkinter as tk
+import tkinter as tk
+#from PIL import ImageTk, Image
+import os
+import sys
 
 
 LARGE_FONT= ("Verdana", 12)
@@ -46,23 +48,33 @@ class MainMenu(tk.Frame):
                             command=lambda: controller.show_frame(OpenPage))
         button.pack()
 
-        button2 = tk.Button(self, text="MANAGE",
-                            command=lambda: controller.show_frame(PasswordPage))
-        button2.pack()
 
 
 class OpenPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="OPENPAGE", font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
+        label1 = tk.Label(self, text="OPENPAGE", font=LARGE_FONT)
+        label1.pack(pady=10,padx=10)
 
+	path = "fp.jpg"
+#	img = ImageTk.PhotoImage(Image.open(path))
+#	panel = tk.Label(window, image = img)
         button1 = tk.Button(self, text="Menu",
                             command=lambda: controller.show_frame(MainMenu))
         button1.pack()
 
+        button2 = tk.Button(self, text="MANAGE",
+                            command=lambda: controller.show_frame(PasswordPage))
+        button2.pack()
 
+	if checker:
+         label2 = tk.Label(self, text="success", font=LARGE_FONT)
+         label2.pack(pady=10,padx=10)
+	else:
+	 label2 = tk.Label(self, text="fail", font=LARGE_FONT)
+         label2.pack(pady=10,padx=10)
+	
 
 class PasswordPage(tk.Frame):
 
@@ -76,9 +88,18 @@ class PasswordPage(tk.Frame):
         button1.pack()
 
         button2 = tk.Button(self, text="OK",
-                            command=lambda: controller.show_frame(ManagePage))
+                            command= okBotton)
         button2.pack()
+	entry = tk.Entry(app,textvariable=ment)
+	entry.pack()
 
+    def okBotton():
+
+	if checker:
+	 controller.show_frame(ManagePage)
+	else:
+	 tkMessageBox.showinfo("Password","Incorrect password")
+	 
 
 class ManagePage(tk.Frame):
 
@@ -125,8 +146,9 @@ class DeletePage(tk.Frame):
         button1.pack()
 
 
-
-
+correctPW = "buckeye"
+checker = 1
 app = GUI()
+app.title("Fingerprint")
 app.geometry("640x480")
 app.mainloop()
