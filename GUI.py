@@ -1,7 +1,8 @@
 import tkinter as tk
-#from PIL import ImageTk, Image
+from PIL import ImageTk, Image
 import os
 import sys
+import sqlite3
 
 
 LARGE_FONT= ("Verdana", 12)
@@ -131,7 +132,9 @@ class AddPage(tk.Frame):
         button1 = tk.Button(self, text="Menu",
                             command=lambda: controller.show_frame(MainMenu))
         button1.pack()
-
+	with con:
+		cur = con.cursor()
+		
 
 
 class DeletePage(tk.Frame):
@@ -146,6 +149,12 @@ class DeletePage(tk.Frame):
         button1.pack()
 
 
+con = lite.connect('database.db')
+cursor = connection.cursor()
+with con:
+	cur = concursor()
+	cur.execute("CREATE TABLE FINGER(ID INT, NAME TEXT)")
+con.close()
 correctPW = "buckeye"
 checker = 1
 app = GUI()
