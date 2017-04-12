@@ -59,8 +59,8 @@ class OpenPage(tk.Frame):
         label1.pack(pady=10,padx=10)
 
 	path = "fp.jpg"
-#	img = ImageTk.PhotoImage(Image.open(path))
-#	panel = tk.Label(window, image = img)
+	img = ImageTk.PhotoImage(Image.open(path))
+	panel = tk.Label(window, image = img)
         button1 = tk.Button(self, text="Menu",
                             command=lambda: controller.show_frame(MainMenu))
         button1.pack()
