@@ -132,9 +132,16 @@ class AddPage(tk.Frame):
         button1 = tk.Button(self, text="Menu",
                             command=lambda: controller.show_frame(MainMenu))
         button1.pack()
+	path = "fp.jpg"
+	img = ImageTk.PhotoImage(Image.open(path))
+	panel = tk.Label(window, image = img)
+	entry = tk.Entry(app,textvariable=ment)
+	entry.pack()
+	newname = entry
 	with con:
 		cur = con.cursor()
-		
+		cur.execute("INSERT INTO FINGER VALUES(newname)")
+	conn.close()
 
 
 class DeletePage(tk.Frame):
