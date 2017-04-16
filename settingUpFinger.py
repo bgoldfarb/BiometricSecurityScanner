@@ -29,7 +29,7 @@ while len(nextLine):
 print(ser.inWaiting())    
 
 print("Reading from serial port")
-writeFile = open('/home/pi/Desktop/passedImageFolder/myFile.jpg', 'w+b')
+writeFile = open('/home/pi/Desktop/myFile.jpg', 'w+b')
 
 def readBlockOfBytes(writeFile):
     nextLine = ser.readline(500)
@@ -38,7 +38,7 @@ def readBlockOfBytes(writeFile):
         nextLine = ser.readline(500)
 
 readBlockOfBytes(writeFile)
-newSize = os.stat('/home/pi/Desktop/passedImageFolder/myFile.jpg')
+newSize = os.stat('/home/pi/Desktop/myFile')
 print(newSize.st_size)
 
 
