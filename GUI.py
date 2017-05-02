@@ -1,3 +1,7 @@
+#https://docs.python.org/2/library/tkinter.html
+#https://docs.python.org/2/library/sqlite3.html
+
+
 import tkinter as tk
 #from PIL import ImageTk, Image
 import os
